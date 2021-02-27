@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace film_ertekeles
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -25,9 +22,5 @@ namespace film_ertekeles
             InitializeComponent();
         }
 
-        private void TB_Num_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            TB_Num.Text = TB.Text.Length + " db";
-        }
     }
 }
