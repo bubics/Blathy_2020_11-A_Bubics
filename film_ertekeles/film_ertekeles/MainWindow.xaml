@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:film_ertekeles"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-        <Window.Resources>
-            <local:MainVM x:Key="VM"/>
-        </Window.Resources>
+    <Window.Resources>
+        <local:MainVM x:Key="VM"/>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -22,8 +22,10 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBox Text="{Binding Path=SearchWord , UpdateSourceTrigger=PropertyChanged}" Grid.Column="0"/>
-            <TextBlock Text="{Binding Path=Db}" Grid.Column="1"/>
+            <TextBlock Text="{Binding Path=Db}" Grid.Row="0" Margin="10,5,10,0"/>
+            <TextBox Text="{Binding Path=SearchWord , UpdateSourceTrigger=PropertyChanged}" Margin="10,5,10,366" Grid.Row="1"/>
+            <ListBox ItemsSource="{Binding Path=Elemek}" Height="306" Margin="10,49,10,0" Grid.Row="2" VerticalAlignment="Top"/>
+            <Button Content="Add" Command="{Binding Path=Add}" HorizontalAlignment="Left" Height="19" Margin="70,365,0,0" Grid.Row="3" VerticalAlignment="Top" Width="256"/>
         </Grid>
     </Grid>
 </Window>
