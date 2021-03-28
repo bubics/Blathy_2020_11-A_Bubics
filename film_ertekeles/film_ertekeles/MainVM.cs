@@ -15,6 +15,10 @@ namespace film_ertekeles
     {
         public MainVM()
         {
+            ADD = new RelayCommand(Add2, AddCanExecute);
+            NEW = new RelayCommand(New, NewCanExecute);
+            DEL = new RelayCommand(Del, DelCanExecute);
+            Adatfelvetel = new ObservableCollection<adatfelvetel>();
             this.PropertyChanged += MainVM_PropertyChanged;
             Elemek = new ObservableCollection<string>();
             Add = new RelayCommand(Add_action);
@@ -27,6 +31,9 @@ namespace film_ertekeles
                 case "SearchWord":
                     Db = SearchWord.Length;
                     break;
+                case "Selected":
+                    SelectedNotNull = Selected != null;
+                    break;
                 default:
                     break;
             }
@@ -34,6 +41,8 @@ namespace film_ertekeles
 
         private string searchWord;
         private int db;
+        private adatfelvetel selected;
+        private bool selectedNotNull;
 
         public string SearchWord { get => searchWord; set => Set(ref searchWord, value); }
         public int Db { get => db; set => Set(ref db, value); }
@@ -48,5 +57,37 @@ namespace film_ertekeles
             }
         }
         public ObservableCollection<string> Elemek { get; private set; }
+        public ObservableCollection<adatfelvetel> Adatfelvetel { get; private set; }
+        public adatfelvetel Selected { get => selected; set => Set(ref selected, value); }
+        public bool SelectedNotNull { get => selectedNotNull; set => Set(ref selectedNotNull, value); }
+
+        public ICommand ADD { get; private set; }
+        public ICommand NEW { get; private set; }
+        public ICommand DEL { get; private set; }
+        
+        private void Add2()
+        {
+            Adatfelvetel.Add(Selected);
+        }
+        private bool AddCanExecute()
+        {
+            return SelectedNotNull && !string.IsNullOrWhiteSpace(Selected.Film_name) && !Adatfelvetel.Contains(Selected);
+        }
+        private void New()
+        {
+            Selected = new adatfelvetel();
+        }
+        private bool NewCanExecute()
+        {
+            return true;
+        }
+        private void Del()
+        {
+            Adatfelvetel.Remove(Selected);
+        }
+        private bool DelCanExecute()
+        {
+            return SelectedNotNull && Adatfelvetel.Contains(Selected);
+        }
     }
 }

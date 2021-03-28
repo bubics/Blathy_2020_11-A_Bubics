@@ -26,6 +26,23 @@
             <TextBox Text="{Binding Path=SearchWord , UpdateSourceTrigger=PropertyChanged}" Margin="10,5,10,366" Grid.Row="1"/>
             <ListBox ItemsSource="{Binding Path=Elemek}" Height="306" Margin="10,49,10,0" Grid.Row="2" VerticalAlignment="Top"/>
             <Button Content="Add" Command="{Binding Path=Add}" HorizontalAlignment="Left" Height="19" Margin="70,365,0,0" Grid.Row="3" VerticalAlignment="Top" Width="256"/>
+            <Button Content="New" Command="{Binding Path= NEW}" Grid.Column="1" HorizontalAlignment="Left" Margin="294,49,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+            <Button Content="Add" Command="{Binding Path= ADD}" Grid.Column="1" HorizontalAlignment="Left" Margin="294,74,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+            <Button Content="Delete" Command="{Binding Path= DEL}" Grid.Column="1" HorizontalAlignment="Left" Margin="294,99,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+            <TextBox Text="{Binding Path=Selected.Film_name, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="154,49,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="{Binding Path=SelectedNotNull}"/>
+            <TextBox Text="{Binding Path=Selected.Film_ertekeles, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="154,85,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="{Binding Path=SelectedNotNull}"/>
+            <Label Content="Film cím" Grid.Column="1" HorizontalAlignment="Left" Margin="10,49,0,0" Grid.Row="1" VerticalAlignment="Top" Height="23" Width="139" IsEnabled="{Binding Path=SelectedNotNull}"/>
+            <Label Content="Értékelés" Grid.Column="1" HorizontalAlignment="Left" Margin="10,85,0,0" Grid.Row="1" VerticalAlignment="Top" Height="23" Width="139" IsEnabled="{Binding Path=SelectedNotNull}"/>
+            <ListBox ItemsSource="{Binding Path=Adatfelvetel}" SelectedItem="{Binding Path=Selected, Mode=TwoWay}" Grid.Column="1" HorizontalAlignment="Left" Height="202" Margin="10,153,0,0" Grid.Row="1" VerticalAlignment="Top" Width="264">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=Film_name}"/>
+                            <TextBlock Text="{Binding Path=Film_ertekeles}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
     </Grid>
 </Window>
