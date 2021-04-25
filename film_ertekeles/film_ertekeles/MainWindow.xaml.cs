@@ -22,5 +22,9 @@ namespace film_ertekeles
             InitializeComponent();
         }
 
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

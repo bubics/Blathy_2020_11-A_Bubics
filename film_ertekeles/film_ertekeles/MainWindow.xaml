@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:film_ertekeles"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="700">
     <Window.Resources>
         <local:MainVM x:Key="VM"/>
     </Window.Resources>
@@ -13,36 +13,33 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+        <Image Source="film.jpg"/>
+        <Frame HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="400" Background="#FF68C2D6" Margin="140,0,0,0" BorderThickness="4,0" BorderBrush="#FF0B5774" RenderTransformOrigin="0.39,0.642"/>
         <Grid DataContext="{StaticResource VM}" Grid.Column="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="{Binding Path=Db}" Grid.Row="0" Margin="10,5,10,0"/>
-            <TextBox Text="{Binding Path=SearchWord , UpdateSourceTrigger=PropertyChanged}" Margin="10,5,10,366" Grid.Row="1"/>
-            <ListBox ItemsSource="{Binding Path=Elemek}" Height="306" Margin="10,49,10,0" Grid.Row="2" VerticalAlignment="Top"/>
-            <Button Content="Add" Command="{Binding Path=Add}" HorizontalAlignment="Left" Height="19" Margin="70,365,0,0" Grid.Row="3" VerticalAlignment="Top" Width="256"/>
-            <Button Content="New" Command="{Binding Path= NEW}" Grid.Column="1" HorizontalAlignment="Left" Margin="294,49,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
-            <Button Content="Add" Command="{Binding Path= ADD , UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Left" Margin="294,74,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
-            <Button Content="Delete" Command="{Binding Path= DEL}" Grid.Column="1" HorizontalAlignment="Left" Margin="294,99,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
-            <TextBox Text="{Binding Path=Selected.Film_name, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="154,49,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="{Binding Path=SelectedNotNull}"/>
-            <TextBox Text="{Binding Path=Selected.Film_ertekeles, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="154,85,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="{Binding Path=SelectedNotNull}"/>
-            <Label Content="Film cím" Grid.Column="1" HorizontalAlignment="Left" Margin="10,49,0,0" Grid.Row="1" VerticalAlignment="Top" Height="23" Width="139" IsEnabled="{Binding Path=SelectedNotNull}"/>
-            <Label Content="Értékelés" Grid.Column="1" HorizontalAlignment="Left" Margin="10,85,0,0" Grid.Row="1" VerticalAlignment="Top" Height="23" Width="139" IsEnabled="{Binding Path=SelectedNotNull}"/>
-            <ListBox ItemsSource="{Binding Path=Adatfelvetel}" SelectedItem="{Binding Path=Selected, Mode=TwoWay}" Grid.Column="1" HorizontalAlignment="Left" Height="202" Margin="10,153,0,0" Grid.Row="1" VerticalAlignment="Top" Width="264">
+            <Button Content="New" Command="{Binding NEW}" HorizontalAlignment="Left" Margin="422,76,0,0" VerticalAlignment="Top" Width="75" Background="#FF4F9797" BorderBrush="#FF0B5774" Foreground="Black" Cursor="Hand"/>
+            <Button Content="Add" Command="{Binding ADD, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="422,101,0,0" VerticalAlignment="Top" Width="75" Background="#FF4F9797" BorderBrush="#FF0B5774" Foreground="Black" Cursor="Hand"/>
+            <Button Content="Delete" Command="{Binding DEL}" HorizontalAlignment="Left" Margin="422,126,0,0" VerticalAlignment="Top" Width="75" Background="#FF4F9797" BorderBrush="#FF0B5774" Foreground="Black" Cursor="Hand"/>
+            <TextBox Text="{Binding Selected.Film_name, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="265,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="{Binding SelectedNotNull}" Cursor="Hand" BorderBrush="#FF0B5774" Background="#FF4F9797" BorderThickness="2,2,2,1" Foreground="Black"/>
+            <TextBox Text="{Binding Selected.Film_ertekeles, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="23" Margin="265,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="{Binding SelectedNotNull}" Background="#FF4F9797" BorderThickness="2" BorderBrush="#FF0B5774"/>
+            <Label Content="Film cím" HorizontalAlignment="Left" Margin="179,76,0,0" VerticalAlignment="Top" Height="29" Width="81" IsEnabled="{Binding SelectedNotNull}" FontFamily="Tw Cen MT Condensed Extra Bold" Cursor="None" OpacityMask="Black" Foreground="Black" FontSize="16"/>
+            <Label Content="Értékelés" HorizontalAlignment="Left" Margin="179,110,0,0" VerticalAlignment="Top" Height="31" Width="100" IsEnabled="{Binding SelectedNotNull}" FontFamily="Tw Cen MT Condensed Extra Bold" Cursor="None" Foreground="Black" FontSize="16"/>
+            <ListBox ItemsSource="{Binding Adatfelvetel}" SelectedItem="{Binding Selected, Mode=TwoWay}" HorizontalAlignment="Left" Height="202" Margin="168,176,0,-29" VerticalAlignment="Top" Width="264" Background="#FF4F9797" Cursor="Hand">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Path=Film_name}"/>
-                            <TextBlock Text="{Binding Path=Film_ertekeles}"/>
+                            <TextBlock Text="{Binding Film_name}"/>
+                            <TextBlock Text="{Binding Film_ertekeles}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <Label Content="Filmek adatbázisa" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="141,22,0,0" Height="36" Width="399" FontSize="30" FontFamily="Tw Cen MT Condensed Extra Bold"/>
         </Grid>
     </Grid>
 </Window>

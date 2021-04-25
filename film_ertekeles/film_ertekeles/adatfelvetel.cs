@@ -10,6 +10,7 @@ namespace film_ertekeles
 {
     class adatfelvetel : ObservableObject
     {
+        /*
         public adatfelvetel()
         {
             this.PropertyChanged += adatfelvetel_PropertyChanged;
@@ -18,6 +19,7 @@ namespace film_ertekeles
         private void adatfelvetel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
         }
+        */
 
         private string film_name;
         private int film_ertekeles;
