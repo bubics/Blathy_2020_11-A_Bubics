@@ -13,7 +13,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Image Source="film.jpg"/>
+        <Image Source="film.jpg" Margin="-20,-22,-20,-19"/>
         <Frame HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="400" Background="#FF68C2D6" Margin="140,0,0,0" BorderThickness="4,0" BorderBrush="#FF0B5774" RenderTransformOrigin="0.39,0.642"/>
         <Grid DataContext="{StaticResource VM}" Grid.Column="0">
             <Grid.ColumnDefinitions>
